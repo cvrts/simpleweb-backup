@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.backend.simpleweb.service.BoardService;
+import com.google.gson.Gson;
 
 @RestController
 @RequestMapping("/board/")
@@ -196,12 +198,12 @@ public class BoardController {
 	 * @param pMap
 	 * @return
 	 */
-	@PostMapping("likeOn")
-	public String likeOn(@RequestBody Map<String, Object> pMap) {
-		logger.info("likeOn 호출");
+	@PostMapping("likeClicked")
+	public String likeClicked(@RequestBody Map<String, Object> pMap) {
+		logger.info("likeClicked 호출");
 		logger.info(pMap);
 		int result = 0;
-		result = boardService.likeOn(pMap);
+		result = boardService.likeClicked(pMap);
 		logger.info(result);
 		return String.valueOf(result);
 	}
@@ -212,12 +214,12 @@ public class BoardController {
 	 * @param pMap
 	 * @return
 	 */
-	@PostMapping("likeOff")
-	public String likeOff(@RequestBody Map<String, Object> pMap) {
-		logger.info("likeOff 호출");
+	@PostMapping("likeUnclicked")
+	public String likeUnclicked(@RequestBody Map<String, Object> pMap) {
+		logger.info("likeUnclicked 호출");
 		logger.info(pMap);
 		int result = 0;
-		result = boardService.likeOff(pMap);
+		result = boardService.likeUnclicked(pMap);
 		logger.info(result);
 		return String.valueOf(result);
 	}

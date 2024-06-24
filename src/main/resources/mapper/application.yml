@@ -1,0 +1,38 @@
+server:
+  port: 8008
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views
+      suffix: .jsp
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url:
+    username:
+    password:
+    hikari:
+      connection-timeout: 20000
+      validation-timeout: 3000
+      minimum-idle: 5
+      maximum-pool-size: 12
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      auto-commit: true
+      pool-name: oraPool
+  servlet:
+    multipart:
+      enabled: true
+      file-sizethreshold: 1MB
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+
+mybatis:
+  mapper-locations: mapper/**/*.xml

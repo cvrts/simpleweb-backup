@@ -195,7 +195,7 @@ public class BoardService {
 		pMap.put("like_no", pMap.get("board_no"));
 		// 해당글 좋아요 전부삭제
 		pMap.put("delete_all_like", 1);
-		int likeDelete = boardDao.likeOff(pMap);
+		int likeDelete = boardDao.likeUnclicked(pMap);
 		logger.info("좋아요삭제 => " + likeDelete);
 		return result;
 	}
@@ -319,7 +319,7 @@ public class BoardService {
 		pMap.put("like_step", pMap.get("comment_step"));
 		// 해당 댓글 좋아요만 삭제
 		pMap.put("delete_all_like", 0);
-		int likeDelete = boardDao.likeOff(pMap);
+		int likeDelete = boardDao.likeUnclicked(pMap);
 		logger.info("좋아요삭제 => " + likeDelete);
 		return result;
 	}
@@ -343,11 +343,11 @@ public class BoardService {
 	 * @param pMap
 	 * @return
 	 */
-	public int likeOn(Map<String, Object> pMap) {
-		logger.info("likeOn 호출");
+	public int likeClicked(Map<String, Object> pMap) {
+		logger.info("likeClicked 호출");
 		logger.info(pMap);
 		int result = 0;
-		result = boardDao.likeOn(pMap);
+		result = boardDao.likeClicked(pMap);
 		return result;
 	}
 
@@ -357,22 +357,25 @@ public class BoardService {
 	 * @param pMap
 	 * @return
 	 */
-	public int likeOff(Map<String, Object> pMap) {
-		logger.info("likeOff 호출");
+	public int likeUnclicked(Map<String, Object> pMap) {
+		logger.info("likeUnclicked 호출");
 		logger.info(pMap);
 		// 해당 좋아요만 취소
 		pMap.put("delete_all_like", 0);
 		int result = 0;
-		result = boardDao.likeOff(pMap);
+		result = boardDao.likeUnclicked(pMap);
 		return result;
 	}
 
+
+	 
 	/**
 	 * Quill image 추가 - 이미지 선택할때마다 인서트
 	 * 
 	 * @param image
 	 * @return
 	 */
+
 	public String imageInsert(MultipartFile image) {
 		logger.info("imageInsert 호출");
 		// 이미지 업로드가 된 파일에 대한 file_name, file_size, file_path 등을 결정해줌 - 서비스계층
@@ -417,5 +420,9 @@ public class BoardService {
 				logger.info(e.toString());
 			}
 		}
+		// 리턴 값으로 선택한 이미지 파일명 넘겨서 사용자 화면에 첨부된 파일명을 열거해주는데 사용
+		String temp = filename;
+		return temp;
 	}
+	
 }
