@@ -71,21 +71,28 @@ const Header = () => {
                 <nav className="header-nav">
                     <ul>
                         <li>
-                            <a href='https://simpleweb.com/fboard'>
-                                <span>자유 게시판</span>
+                            <a href='https://simpleweb.com/free'>
+                                <span>자유</span>
                                 <div className='text-mobile'></div>
                             </a>
                         </li>
 
                         <li>
-                            <a href='https://simpleweb.com/hboard'>
-                                <span>유머 게시판</span>
+                            <a href='https://simpleweb.com/humor'>
+                                <span>유머</span>
                                 <div className='text-mobile'></div>
                             </a>
                         </li>
 
                         <li>
-                            <a href='https://simpleweb.com/mboard'>
+                            <a href='https://simpleweb.com/forum'>
+                                <span>포럼</span>
+                                <div className='text-mobile'></div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href='https://simpleweb.com/market'>
                                 <span>커뮤니티 샵</span>
                                 <div className='text-mobile'></div>
                             </a>
