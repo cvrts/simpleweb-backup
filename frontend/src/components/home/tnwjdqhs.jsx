@@ -20,6 +20,13 @@ const HomeLayout = () => {
             const temp = JSON.stringify(res.data)
             const jsonDoc = JSON.parse(temp)
             // 데이터 처리 로직...
+            // ( free, humor, forum 신규글 / 인기글 ) 조건용 변수
+            let freeHotCount = 0;
+            let forumHotCount = 0;
+            let humorHotCount = 0;
+            let freeNewCount = 0;
+            let forumNewCount = 0;
+            let humorNewCount = 0;
         };
         fetchMainList();
     }, []);

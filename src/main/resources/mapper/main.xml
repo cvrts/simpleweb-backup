@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backend.simpleweb">
+<!-- forum 인기글(추천 높은 순) -->
+<select id="mainForumHot" parameterType="map" resultType="map">
+	SELECT b.BOARD_NO, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_DATE,
+	b.BOARD_HIT,
+	u.USER_NICKNAME, COUNT(l.LIKE_NO) as LIKE_COUNT
+	FROM TB_BOARD b
+	JOIN TB_USER u ON b.USER_ID = u.USER_ID
+	LEFT JOIN TB_LIKE l ON b.BOARD_NO = l.LIKE_GROUP AND l.LIKE_TYPE = 0
+	WHERE b.BOARD_CATEGORY = 'forum'
+	AND b.BOARD_STATUS = 0
+	GROUP BY b.BOARD_NO, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_DATE,
+	b.BOARD_HIT, u.USER_NICKNAME
+	HAVING COUNT(l.LIKE_NO) >= 5
+	ORDER BY LIKE_COUNT DESC, b.BOARD_DATE DESC
+	FETCH FIRST 10 ROWS ONLY
+	
+</select>
+
+<!-- free 인기글(추천 높은 순) -->
+
+<!-- humor 인기글(추천 높은 순) -->
+
+
+<!-- forum 신규글 -->
+
+<!-- free 신규글 -->
+
+<!-- humor 신규글 -->
+
+</mapper>

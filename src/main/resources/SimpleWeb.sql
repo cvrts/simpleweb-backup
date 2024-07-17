@@ -123,7 +123,7 @@ COMMENT ON COLUMN "TB_LIKE"."LIKE_NO" IS '글 번호(중복 좋아요 방지)';
 
 COMMENT ON COLUMN "TB_LIKE"."USER_ID" IS '회원식별자';
 
-COMMENT ON COLUMN "TB_LIKE"."LIKE_TYPE" IS '좋아요용 타입 글:0/댓글:1/리뷰:3';
+COMMENT ON COLUMN "TB_LIKE"."LIKE_TYPE" IS '좋아요용 타입 글:0/댓글:1/';
 
 COMMENT ON COLUMN "TB_LIKE"."LIKE_GROUP" IS '해당 글, 댓글, 리뷰의  번호';
 
